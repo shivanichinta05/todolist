@@ -3,266 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo list</title>
+    <title>Todo List</title>
     <style>
-    @import url("https://t3.ftcdn.net/jpg/02/59/31/70/360_F_259317013_nJJaBgGGzvXMd6cAyLd6yMJtbdnd61wk.jpg");
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
 
 *,
 *::after,
 *::before {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-    text-align: center;
-}
-
-:root {
-	--bg-accent: hsl(210, 8%, 90%);
-	--text-clr: hsl(210, 47%, 60%);
-	--icon-clr: rgb(17, 175, 38);
-
-	--space-2: 2rem;
-	--space-175: 1.75rem;
-	--space-15: 1.5rem;
-	--space-125: 1.25rem;
-	--space-1: 1rem;
-	--space-05: 0.5rem;
-	--space-025: 0.25rem;
-
-	--easing: cubic-bezier(0.5, 0, 0.2, 1);
-	--easing1: cubic-bezier(0.4, 0.3, 0.65, 1);
-	--easing2: cubic-bezier(0.8, 0, 0.6, 1);
-	--easing3: cubic-bezier(0, 0.2, 0.25, 1);
-
-	--sharp-shadow: 0px 2px 1px 0 #0001, 0 0.125em 0.25em 0.0625em #0002,
-		0 0.2em 0.5em #0002;
-}
-
-li {
-	list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-	font: 16px/1.2 "Montserrat", sans-serif;
-	background: linear-gradient(45deg, hsl(46, 82%, 84%), hsl(283, 54%, 85%));
+    font: 16px/1.2 "Montserrat", sans-serif;
+    background: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem; /* Increased font size */
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    height: 40px;
+    padding: 0 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4f7196;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #4089c9;
 }
 
 .wrapper {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	max-width: 60rem;
-	min-height: 100vh;
-	margin-inline: auto;
-	padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    justify-items: center;
 }
 
-.todo__container {
-	--header-height: calc(100% / 2.5);
-	--content-height: calc(100% - var(--header-height));
-	width: 19rem;
-	height: 30rem;
-	background-color: #fff;
-	border-radius: var(--space-05);
-	box-shadow: var(--sharp-shadow);
-	overflow: hidden;
+.todo__item {
+    background-color: pink;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    width: 150px;
+    text-align: center;
+    transition: transform 0.2s;
+    position: relative;
 }
 
-.header {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	height: var(--header-height);
-	overflow: hidden;
-    
+.todo__item:hover {
+    transform: scale(1.05);
 }
 
-.header::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		to top,
-		hsla(0, 0%, 0%, 0.4),
-		12%,
-		hsla(0, 0%, 0%, 0.15) 41.6%,
-		hsla(0, 0%, 0%, 0.1) 50%,
-		hsla(0, 0%, 0%, 0.01) 59.9%,
-		hsla(0, 0%, 0%, 0) 100%
-	);
-	z-index: 1;
+.todo__item p {
+    color: navy;
+    margin-bottom: 1rem;
 }
 
-.figure {
-	display: flex;
-	justify-content: end;
-	position: relative;
+.todo__actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.title__caption {
-	display: flex;
-	flex-direction: column;
-	z-index: 10;
-	line-height: 1.1;
-	top: calc(var(--header-height) + var(--space-2));
-	position: absolute;
-	margin-inline: var(--space-05);
+.todo__item:hover .todo__actions {
+    opacity: 1;
 }
 
-.title {
-	align-self: flex-end;
-	text-shadow: -2px 3px 4px #666;
-	color: #fff;
+.todo__actions a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #90ce9e;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    margin: 0.2rem;
+    transition: background-color 0.3s;
 }
 
-.title--primary {
-	font-size: 2rem;
-	font-weight: 600;
-	text-transform: uppercase;
+.todo__actions a:hover {
+    background-color: #218838;
 }
 
-.title--secondary {
-	font-weight: 400;
-	font-size: 1.25rem;
+.todo__actions .edit {
+    background-color: skyblue;
 }
 
-img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: center;
-}
-
-.content {
-	display: flex;
-	height: var(--content-height);
-	overflow: hidden;
-}
-
-.list__container--primary {
-	display: flex;
-	flex-direction: column;
-	gap: var(--space-05);
-	margin: var(--space-05);
-	justify-content: space-between;
-	overflow: hidden;
-}
-
-.list__item--primary {
-	display: flex;
-	flex-direction: column;
-	border-radius: var(--space-025);
-	border: 1px solid var(--bg-accent);
-	background: linear-gradient(to right, var(--bg-accent), #fff);
-	transition: all 400ms ease;
-}
-
-[type="checkbox"] {
-	display: none;
-}
-
-.list-input-label {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	min-height: 2.25rem;
-	margin-inline: var(--space-05);
-}
-
-.text--primary {
-	font-size: 0.875rem;
-	font-weight: 600;
-	color: var(--text-clr);
-	transition: all 866ms var(--easing1);
-}
-
-.text--secondary {
-	font-size: 0.85rem;
-	font-weight: 500;
-	color: var(--blueGray-clr-4);
-}
-
-.list__container--secondary {
-	transition: all 400ms var(--easing3);
-	height: 0;
-	display: flex;
-	flex-direction: column;
-	overflow: hidden;
-}
-
-.list__item--secondary {
-	display: flex;
-	margin-inline: var(--space-05);
-	padding-inline: var(--space-05);
-	opacity: 0;
-	transform: translateY(-6rem);
-}
-
-.icon {
-	color: #ccc;
-}
-
-.list__item--primary:hover .list__container--secondary {
-	height: 5.75rem;
-	display: flex;
-	flex-direction: column;
-	transition-delay: 200ms;
-}
-
-.list__item--primary:hover .list__item--secondary {
-	transition: transform 400ms var(--easing3), opacity 450ms var(--easing2);
-	opacity: 1;
-	transform: translateY(0);
-}
-
-.list__container--primary :checked + label .icon {
-	color: var(--icon-clr);
-	transform: scale(1.5);
-	transition: all 266ms var(--easing1);
-	transition-delay: 200ms;
-}
-
-.list__container--primary :checked + label .text--primary {
-	animation: lineThrough 400ms forwards;
-}
-
-@keyframes lineThrough {
-	0% {
-		text-decoration: 2px line-through #0000;
-	}
-	100% {
-		text-decoration: 2px line-through #000;
-	}
+.todo__actions .edit:hover {
+    background-color: #0056b3;
 }
 </style>
 </head>
 <body>
     <div class="container">
-        <h1>Todo list</h1>
+        <h1>Todo List</h1>
         <form action="/" method="post" autocomplete="off">
-            <input type="text" placeholder="Add todo's here" name="Todo"required>
+            <input type="text" placeholder="Add todo's here" name="Todo" required>
             <button type="submit">Add</button>
         </form>
-    </div>
-   <% if(data){ %>
-        <% data.forEach(Todo=>{ %>
-            <div class="card">
-                <div class="class-description">
-                    <p>
-                        <%= Todo.todo %>
-                    </p>
+        <% if (data) { %>
+        <div class="wrapper">
+            <% data.forEach(Todo => { %>
+            <div class="todo__item">
+                <p><%= Todo.todo %></p>
+                <div class="todo__actions">
+                    <a href="/update/<%= Todo.id %>" class="edit">✏️</a>
+                    <a href="/delete/<%= Todo.id %>" class="delete">delete</a>
                 </div>
-				<div class="card-discription" sytle="padding-top:10rem;">
-					<a href="/update/<%= Todo.id %>">update</a>
-					<a href="/delete/<%= Todo.id %>" class="todo-delete">delete</a>
-
-				</div>
             </div>
-            
-        <% }) %>
-    <% } %>
-    
-
+            <% }) %>
+        </div>
+        <% } %>
+    </div>
 </body>
 </html>
