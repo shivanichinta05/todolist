@@ -3,12 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Update Todo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: beige;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        input[type="text"] {
+            width: 300px;
+            height: 40px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            height: 40px;
+            padding: 0 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4f7196;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4089c9;
+        }
+    </style>
 </head>
 <body>
-    <form action="/update/todo/<%= data.id%>"method="post"autocomplete="off">
-        <input type="text" value="<%= data.todo%>"name="todo">
-        <button type="submit">submit</button>
+    <form action="/update/todo/<%= data.id %>" method="post" autocomplete="off">
+        <input type="text" value="<%= data.todo %>" name="todo">
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
