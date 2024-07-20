@@ -246,13 +246,18 @@ img {
         </form>
     </div>
    <% if(data){ %>
-        <% data.forEach(shiv=>{ %>
+        <% data.forEach(Todo=>{ %>
             <div class="card">
-                <div class=""class-description>
+                <div class="class-description">
                     <p>
-                        <%= shiv.todo %>
+                        <%= Todo.todo %>
                     </p>
                 </div>
+				<div class="card-discription" sytle="padding-top:10rem;">
+					<a href="/update/<%= Todo.id %>">update</a>
+					<a href="/delete/<%= Todo.id %>" class="todo-delete">delete</a>
+
+				</div>
             </div>
             
         <% }) %>
