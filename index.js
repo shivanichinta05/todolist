@@ -45,3 +45,35 @@ app.post('/',(req,res)=>{
      ChannelModel.save();
      res.redirect('/')
 })
+
+app.get('/delete/:id',(req,res)=>{
+    channelModel.findByIdAndDelete(req.params.id)
+   .then(()=>{
+    res.redirect('/')
+   })
+   .catch((err)=>{
+        res.send(err)
+   })
+
+})
+app.get('/update/:id',(req,res)=>{
+    channelModel.findById(req.params.id)
+    .then(result=>
+    {
+        res.render("update",data=result)
+    })
+    .catch(err=>{
+        res.send(err)
+    })
+})
+
+app.post('/update/todo/:id',(req,res)=>{
+    const a=req.body.todo
+    channelModel.findByIdAndUpdate(req.params.id,{todo:a})
+    .then(()=>{
+        res.redirect('/')
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+})
