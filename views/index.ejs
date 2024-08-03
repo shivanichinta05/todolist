@@ -7,125 +7,125 @@
     <style>
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
 
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    *,
+    *::after,
+    *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-body {
-    font: 16px/1.2 "Montserrat", sans-serif;
-    background: beige;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+    body {
+        font: 16px/1.2 "Montserrat", sans-serif;
+        background: beige;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
 
-.container {
-    text-align: center;
-}
+    .container {
+        text-align: center;
+    }
 
-h1 {
-    font-size: 3rem; /* Increased font size */
-    margin-bottom: 20px;
-    color: #333;
-}
+    h1 {
+        font-size: 3rem; /* Increased font size */
+        margin-bottom: 20px;
+        color: #333;
+    }
 
-form {
-    margin-bottom: 20px;
-}
+    form {
+        margin-bottom: 20px;
+    }
 
-input[type="text"] {
-    width: 300px;
-    height: 40px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
+    input[type="text"] {
+        width: 300px;
+        height: 40px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
 
-button {
-    height: 40px;
-    padding: 0 15px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4f7196;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+    button {
+        height: 40px;
+        padding: 0 15px;
+        margin-left: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4f7196;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
 
-button:hover {
-    background-color: #4089c9;
-}
+    button:hover {
+        background-color: #4089c9;
+    }
 
-.wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1rem;
-    justify-items: center;
-}
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Ensure three columns */
+        gap: 1rem;
+        justify-items: center;
+    }
 
-.todo__item {
-    background-color: pink;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 1rem;
-    width: 150px;
-    text-align: center;
-    transition: transform 0.2s;
-    position: relative;
-}
+    .todo__item {
+        background-color: pink;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 0.5rem; /* Reduced padding for a smaller box */
+        width: 120px; /* Adjusted width */
+        text-align: center;
+        transition: transform 0.2s;
+        position: relative;
+    }
 
-.todo__item:hover {
-    transform: scale(1.05);
-}
+    .todo__item:hover {
+        transform: scale(1.05);
+    }
 
-.todo__item p {
-    color: navy;
-    margin-bottom: 1rem;
-}
+    .todo__item p {
+        color: navy;
+        margin-bottom: 1rem;
+    }
 
-.todo__actions {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
+    .todo__actions {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
 
-.todo__item:hover .todo__actions {
-    opacity: 1;
-}
+    .todo__item:hover .todo__actions {
+        opacity: 1;
+    }
 
-.todo__actions a {
-    text-decoration: none;
-    color: #fff;
-    background-color: #90ce9e;
-    padding: 0.3rem 0.6rem;
-    border-radius: 5px;
-    margin: 0.2rem;
-    transition: background-color 0.3s;
-}
+    .todo__actions a {
+        text-decoration: none;
+        color: #fff;
+        background-color: #90ce9e;
+        padding: 0.3rem 0.6rem;
+        border-radius: 5px;
+        margin: 0.2rem;
+        transition: background-color 0.3s;
+    }
 
-.todo__actions a:hover {
-    background-color: #218838;
-}
+    .todo__actions a:hover {
+        background-color: #218838;
+    }
 
-.todo__actions .edit {
-    background-color: skyblue;
-}
+    .todo__actions .edit {
+        background-color: skyblue;
+    }
 
-.todo__actions .edit:hover {
-    background-color: #0056b3;
-}
-</style>
+    .todo__actions .edit:hover {
+        background-color: #0056b3;
+    }
+    </style>
 </head>
 <body>
     <div class="container">
